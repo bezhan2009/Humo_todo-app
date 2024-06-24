@@ -65,9 +65,13 @@ func main() {
 	Start()
 }
 
-//Функция инициализации config-ов
+// initConfigs Функция инициализации config-ов
 func initConfigs() error {
-	viper.AddConfigPath("configs") //адрес директории
-	viper.SetConfigName("config")  //имя файла
-	return viper.ReadInConfig()    //считывает config и сохраняет данные во внутренний объект viper
+	configPath := os.Getenv("CONFIG_PATH")
+	if configPath == "" {
+		configPath = "configs" // default relative path
+	}
+	viper.AddConfigPath(configPath)
+	viper.SetConfigName("config")
+	return viper.ReadInConfig()
 }
