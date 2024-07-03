@@ -23,7 +23,7 @@ func Init(database *sqlx.DB) {
 	}
 }
 
-//Dropping tables
+// Drop Dropping tables
 func Drop(database *sqlx.DB) {
 	DDLs := []string{
 		DropListsItemsTable,
